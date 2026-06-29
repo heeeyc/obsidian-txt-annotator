@@ -155,6 +155,13 @@ Click the gear icon next to TXT Annotator in the Community plugins list and set 
 - Your original TXT files are never modified
 
 ---
+## 打赏 / Donate
+
+ Buy me a coffee ☕
+<img src="images/donate.png" width="200" alt="微信收款码">
+
+
+---
 
 ## 兼容性 / Compatibility
 
