@@ -15,9 +15,15 @@ Read and annotate TXT files directly in Obsidian — highlight text, add notes, 
 - **批注**：为每条高亮添加文字批注，悬停即可预览
 - **自动生成笔记**：所有划线与批注自动同步到对应的 Markdown 笔记文件，删除高亮后笔记同步更新
 - **两种笔记样式**：卡片版（带时间戳、分割线）和简洁版，可在设置中切换
+![](images/notes.png)
+![](images/notes1.png)
 - **跳转定位**：按住 `Ctrl`（Windows/Linux）或 `Cmd`（macOS）点击高亮文字，直接跳转到笔记中对应位置
 - **滚动记忆**：自动记录每个文件的阅读进度，下次打开从上次位置继续
 - **深度自定义**：高亮颜色、字号、字体、字重、批注样式、时间戳、卡片背景色均可在设置中调整
+![](images/highlightcolor.png)
+![](images/highlighttext.png)
+![](images/notestext.png)
+![](images/timestamp.png)
 
 ### 🇬🇧 English
 
@@ -43,6 +49,7 @@ Read and annotate TXT files directly in Obsidian — highlight text, add notes, 
 3. 将三个文件放入该文件夹
 4. 重启 Obsidian，或在设置 → 第三方插件页面点击右上角刷新按钮
 5. 找到 **TXT Annotator**，点击启用
+ ![](images/enable.png)
 
 #### 🇬🇧 English
 
@@ -73,7 +80,7 @@ Search for **TXT Annotator** in Obsidian Settings → Community plugins → Brow
 #### 二、设置插件
 
 点击 TXT Annotator 旁的设置齿轮，将笔记存放路径修改为你创建的文件夹。若跳过此步骤，插件默认生成名为 `Annotations` 的文件夹存放笔记。
-
+![](images/setting.png)
 #### 三、笔记标注
 
 1. 将 TXT 文件（**仅支持 UTF-8 编码**）拖入 Obsidian，可与笔记放在同一文件夹，也可单独存放，不影响笔记生成与存储
@@ -81,6 +88,7 @@ Search for **TXT Annotator** in Obsidian Settings → Community plugins → Brow
 3. 选中文字，浮出颜色选择框，点击颜色即可高亮；点击 **✎ 批注** 可同时添加文字备注
 4. 点击已有高亮，弹出菜单可修改颜色、编辑批注或删除高亮
 5. 高亮与批注会自动同步生成同名 Markdown 笔记文件；删除高亮后笔记同步更新
+ ![](images/highlight.png)
 
 #### 四、其他功能
 
