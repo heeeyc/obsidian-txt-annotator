@@ -1,0 +1,11 @@
+{
+  "id": "txt-annotator",
+  "name": "TXT Annotator",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Read and annotate TXT files with highlights and notes/在 Obsidian 中阅读 TXT 文件并添加高亮划线与批注",
+  "author": "Soli",
+  "authorUrl": "https://github.com/heeeyc",
+  "fundingUrl": "",
+  "isDesktopOnly": false
+}

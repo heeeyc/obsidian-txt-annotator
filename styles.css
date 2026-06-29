@@ -1,0 +1,531 @@
+/* ═══════════════════════════════════════════════════════════════
+   TXT Annotator - 样式总表
+   ─────────────────────────────────────────────────────────────
+   § 1  CSS 变量（默认值，运行时由插件动态覆盖）
+   § 2  阅读视图（容器 / 标题栏 / 正文 / 高亮 / 弹出菜单 / Tooltip / Modal）
+   § 3  简洁版笔记（Callout）
+   § 4  卡片版笔记（Callout）
+   § 5  设置面板
+   § 6  移动端适配
+   ═══════════════════════════════════════════════════════════════ */
+
+
+/* ── § 1  CSS 变量 ───────────────────────────────────────────── */
+:root {
+  /* 颜色组（由插件动态覆盖） */
+  --txt-color-yellow-bg:     #FFF9C4;
+  --txt-color-yellow-text:   #5c4a00;
+  --txt-color-yellow-alpha:  rgba(249, 168, 37, 0.15);
+
+  --txt-color-pink-bg:       #FCE4EC;
+  --txt-color-pink-text:     #880e4f;
+  --txt-color-pink-alpha:    rgba(233, 30, 99, 0.15);
+
+  --txt-color-blue-bg:       #E3F2FD;
+  --txt-color-blue-text:     #01579b;
+  --txt-color-blue-alpha:    rgba(33, 150, 243, 0.15);
+
+  --txt-color-green-bg:      #E8F5E9;
+  --txt-color-green-text:    #1b5e20;
+  --txt-color-green-alpha:   rgba(76, 175, 80, 0.15);
+
+  --txt-color-orange-bg:     #FFF3E0;
+  --txt-color-orange-text:   #e65100;
+  --txt-color-orange-alpha:  rgba(255, 152, 0, 0.15);
+
+  /* 高亮文字（由插件动态覆盖） */
+  --txt-highlight-font-size:   18px;
+  --txt-highlight-font-weight: normal;
+  --txt-highlight-font-family: var(--font-text);
+  --txt-highlight-color:       var(--text-normal);
+
+  /* 批注文字（由插件动态覆盖） */
+  --txt-note-font-size:   14px;
+  --txt-note-font-weight: normal;
+  --txt-note-font-family: var(--font-text);
+  --txt-note-color:       var(--text-muted);
+  --txt-note-line-height: 1.6;
+
+  /* 时间戳（由插件动态覆盖） */
+  --txt-timestamp-size:  12px;
+  --txt-timestamp-color: var(--text-muted);
+}
+
+
+/* ── § 2  阅读视图 ───────────────────────────────────────────── */
+
+/* 容器 */
+.txt-annotator-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--background-primary);
+}
+
+/* 顶部标题栏 */
+.txt-header {
+  padding: 12px 20px 16px;
+  border-bottom: 1px solid var(--background-modifier-border);
+  flex-shrink: 0;
+}
+
+.txt-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-accent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+/* 正文区域 */
+.txt-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 48px 48px;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+  line-height: 1.9;
+  font-size: 18px;
+  color: var(--text-normal);
+  font-family: var(--font-text, Georgia, "Times New Roman", serif);
+  max-width: 780px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.txt-line {
+  min-height: 1.9em;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.txt-line-empty {
+  height: 0.6em;
+  min-height: unset;
+}
+
+/* 高亮 */
+.txt-highlight {
+  border-radius: 3px;
+  padding: 1px 0;
+  cursor: pointer;
+  transition: filter 0.1s;
+  position: relative;
+}
+
+.txt-highlight:hover {
+  filter: brightness(0.92);
+}
+
+.txt-highlight-yellow { background-color: var(--txt-color-yellow-bg); color: var(--txt-color-yellow-text); }
+.txt-highlight-pink   { background-color: var(--txt-color-pink-bg);   color: var(--txt-color-pink-text);   }
+.txt-highlight-blue   { background-color: var(--txt-color-blue-bg);   color: var(--txt-color-blue-text);   }
+.txt-highlight-green  { background-color: var(--txt-color-green-bg);  color: var(--txt-color-green-text);  }
+.txt-highlight-orange { background-color: var(--txt-color-orange-bg); color: var(--txt-color-orange-text); }
+
+.txt-has-note {
+  border-bottom: 2px solid currentColor;
+}
+
+.txt-note-icon {
+  font-size: 10px;
+  margin-left: 2px;
+  opacity: 0.7;
+  vertical-align: super;
+  pointer-events: none;
+}
+
+/* 颜色弹出菜单 */
+.txt-color-popup {
+  position: absolute;
+  z-index: 9999;
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity 0.1s;
+  min-width: 260px;
+}
+
+.txt-popup-colors {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.txt-color-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  padding: 0;
+}
+
+/* 颜色按钮：背景/边框由 JS 按用户设置动态注入，
+   这里只保留静态 fallback（未改色时的默认外观） */
+.txt-color-btn-yellow { background-color: var(--txt-color-yellow-bg) !important; border-color: var(--txt-color-yellow-text) !important; }
+.txt-color-btn-pink   { background-color: var(--txt-color-pink-bg)   !important; border-color: var(--txt-color-pink-text)   !important; }
+.txt-color-btn-blue   { background-color: var(--txt-color-blue-bg)   !important; border-color: var(--txt-color-blue-text)   !important; }
+.txt-color-btn-green  { background-color: var(--txt-color-green-bg)  !important; border-color: var(--txt-color-green-text)  !important; }
+.txt-color-btn-orange { background-color: var(--txt-color-orange-bg) !important; border-color: var(--txt-color-orange-text) !important; }
+
+.txt-color-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.txt-color-btn-active {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px var(--interactive-accent);
+}
+
+.txt-popup-note-btn,
+.txt-popup-del-btn {
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+  transition: background 0.1s;
+  background: transparent;
+  color: var(--text-normal);
+}
+
+.txt-popup-note-btn:hover {
+  background: var(--background-modifier-hover);
+}
+
+.txt-popup-del-btn {
+  color: var(--text-error, #e53935);
+}
+
+.txt-popup-del-btn:hover {
+  background: rgba(229, 57, 53, 0.08);
+}
+
+/* 批注 Tooltip */
+.txt-note-tooltip {
+  position: absolute;
+  z-index: 9999;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--interactive-accent);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 16px;
+  color: var(--text-normal);
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  pointer-events: none;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* 批注 Modal */
+.txt-note-modal .txt-modal-title {
+  margin-bottom: 12px;
+  font-size: 15px;
+  color: var(--text-normal);
+}
+
+.txt-modal-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-secondary);
+  color: var(--text-normal);
+  font-size: 14px;
+  line-height: 1.6;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: var(--font-text);
+}
+
+.txt-modal-textarea:focus {
+  outline: none;
+  border-color: var(--interactive-accent);
+}
+
+.txt-modal-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.txt-modal-btn {
+  padding: 6px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.1s;
+}
+
+.txt-modal-btn-cancel {
+  background: var(--background-modifier-hover);
+  color: var(--text-muted);
+}
+
+.txt-modal-btn-cancel:hover {
+  background: var(--background-modifier-border);
+}
+
+.txt-modal-btn-save {
+  background: var(--interactive-accent);
+  color: var(--text-on-accent);
+}
+
+.txt-modal-btn-save:hover {
+  filter: brightness(1.1);
+}
+
+
+/* ── § 3  简洁版笔记（Callout） ──────────────────────────────── */
+
+/* 整体：去除背景和边框 */
+.callout[data-callout^="txt-simple-"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 4px 0 !important;
+}
+
+/* 图标 */
+.callout[data-callout^="txt-simple-"] .callout-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 20px !important;
+  flex-shrink: 0 !important;
+  margin-right: 6px !important;
+}
+
+.callout[data-callout^="txt-simple-"] .callout-icon .svg-icon {
+  display: none !important;
+}
+
+/* 图标色块：各颜色 */
+.callout[data-callout="txt-simple-yellow"] .callout-icon { background-color: var(--txt-color-yellow-bg) !important; border: 1px solid var(--txt-color-yellow-text) !important; }
+.callout[data-callout="txt-simple-pink"]   .callout-icon { background-color: var(--txt-color-pink-bg)   !important; border: 1px solid var(--txt-color-pink-text)   !important; }
+.callout[data-callout="txt-simple-blue"]   .callout-icon { background-color: var(--txt-color-blue-bg)   !important; border: 1px solid var(--txt-color-blue-text)   !important; }
+.callout[data-callout="txt-simple-green"]  .callout-icon { background-color: var(--txt-color-green-bg)  !important; border: 1px solid var(--txt-color-green-text)  !important; }
+.callout[data-callout="txt-simple-orange"] .callout-icon { background-color: var(--txt-color-orange-bg) !important; border: 1px solid var(--txt-color-orange-text) !important; }
+
+/* 高亮文字（标题行） */
+.callout[data-callout^="txt-simple-"] .callout-title {
+  color: var(--text-normal) !important;
+  font-weight: normal !important;
+  padding: 0 !important;
+}
+
+.callout[data-callout^="txt-simple-"] .callout-title-inner {
+  font-size:   var(--txt-highlight-font-size,   18px) !important;
+  font-weight: var(--txt-highlight-font-weight, normal) !important;
+  font-family: var(--txt-highlight-font-family, var(--font-text)) !important;
+  color:       var(--txt-highlight-color,       var(--text-normal)) !important;
+}
+
+/* 内容区域 */
+.callout[data-callout^="txt-simple-"] .callout-content {
+  background: transparent !important;
+  padding: 0 0 0 0.5em !important;
+}
+
+/* 批注行：缩进 + 背景色 */
+.txt-simple-note-line {
+  display: block;
+  padding: 2px 10px;
+  margin: 2px 0 2px 2em;
+  border-radius: 4px;
+  font-size:   var(--txt-note-font-size,   14px) !important;
+  font-weight: var(--txt-note-font-weight, normal) !important;
+  font-family: var(--txt-note-font-family, var(--font-text)) !important;
+  color:       var(--txt-note-color,       var(--text-muted)) !important;
+  line-height: var(--txt-note-line-height, 1.6) !important;
+}
+
+/* 批注行背景色：各颜色 */
+.callout[data-callout="txt-simple-yellow"] .txt-simple-note-line { background-color: var(--txt-color-yellow-alpha) !important; }
+.callout[data-callout="txt-simple-pink"]   .txt-simple-note-line { background-color: var(--txt-color-pink-alpha)   !important; }
+.callout[data-callout="txt-simple-blue"]   .txt-simple-note-line { background-color: var(--txt-color-blue-alpha)   !important; }
+.callout[data-callout="txt-simple-green"]  .txt-simple-note-line { background-color: var(--txt-color-green-alpha)  !important; }
+.callout[data-callout="txt-simple-orange"] .txt-simple-note-line { background-color: var(--txt-color-orange-alpha) !important; }
+
+
+/* ── § 4  卡片版笔记（Callout） ──────────────────────────────── */
+
+/* 整体（去掉左侧色条占位，恢复正常内边距） */
+.callout[data-callout^="txt-card-"] {
+  --callout-icon: star;
+  background: var(--background-primary) !important;
+  border: 1px solid var(--background-modifier-border) !important;
+  border-radius: 6px !important;
+  padding: 12px 16px !important;
+  margin: 8px 0 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+  position: relative !important;
+}
+
+/* 有批注时换图标 */
+.callout[data-callout$="-note"] {
+  --callout-icon: quote;
+}
+
+/* 图标颜色*/
+.callout[data-callout^="txt-card-yellow"] .callout-icon { --callout-color: var(--txt-color-yellow-text); color: var(--txt-color-yellow-text) !important; }
+.callout[data-callout^="txt-card-pink"]   .callout-icon { --callout-color: var(--txt-color-pink-text);   color: var(--txt-color-pink-text)   !important; }
+.callout[data-callout^="txt-card-blue"]   .callout-icon { --callout-color: var(--txt-color-blue-text);   color: var(--txt-color-blue-text)   !important; }
+.callout[data-callout^="txt-card-green"]  .callout-icon { --callout-color: var(--txt-color-green-text);  color: var(--txt-color-green-text)  !important; }
+.callout[data-callout^="txt-card-orange"] .callout-icon { --callout-color: var(--txt-color-orange-text); color: var(--txt-color-orange-text) !important; }
+
+/* 标题栏（仅图标，不再放高亮文字） */
+.callout[data-callout^="txt-card-"] .callout-title {
+  padding: 0 !important;
+  margin-bottom: 0px !important;
+
+}
+
+.callout[data-callout^="txt-card-"] .callout-title-inner {
+  display: none !important;
+}
+
+/* 内容区域：第一行是高亮文字，后面是批注 + 分割线 + 时间戳 */
+.callout[data-callout^="txt-card-"] .callout-content {
+  padding: 0 !important;
+  margin-top: 0 !important;
+  font-family: var(--font-text);
+}
+
+/* 高亮文字（显式 class，不依赖段落顺序，避免被 <hr>/时间戳干扰） */
+.callout[data-callout^="txt-card-"] .txt-card-highlight-text {
+  display: block !important;
+  font-size:   var(--txt-highlight-font-size,   18px) !important;
+  font-weight: var(--txt-highlight-font-weight, normal) !important;
+  font-family: var(--txt-highlight-font-family, var(--font-text)) !important;
+  color:       var(--txt-highlight-color,       var(--text-normal)) !important;
+  margin: 0 0 6px !important;
+}
+
+/* 批注文字（显式 class） */
+.callout[data-callout^="txt-card-"] .txt-card-note-text {
+  display: block !important;
+  font-size:   var(--txt-note-font-size,   14px) !important;
+  font-weight: var(--txt-note-font-weight, normal) !important;
+  font-family: var(--txt-note-font-family, var(--font-text)) !important;
+  color:       var(--txt-note-color,       var(--text-muted)) !important;
+  line-height: var(--txt-note-line-height, 1.6) !important;
+  margin: 2px 0 !important;
+}
+
+/* 分割线：颜色可通过 --txt-divider-color 自定义 */
+.txt-card-divider {
+  border: none !important;
+  border-top: 1px solid var(--txt-divider-color, var(--background-modifier-border)) !important;
+  margin: 6px 0 4px !important;
+  margin-left: 4em !important; /* 整体缩进4字符，随字号自动等比缩放 */
+  width: calc(100% - 4em) !important;
+  opacity: var(--txt-divider-opacity, 0.5) !important;
+}
+
+/* 时间戳 */
+.txt-card-timestamp {
+  display: block !important;
+  text-align: right !important;
+  margin-top: 10px !important;
+  font-style: normal !important;
+  font-size: var(--txt-timestamp-size,  12px) !important;
+  color:     var(--txt-timestamp-color, var(--text-muted)) !important;
+}
+
+
+/* ── § 5  设置面板 ───────────────────────────────────────────── */
+
+/* 颜色自定义区域每行（背景色 / 文字色 / 边框色） */
+.txt-settings-color-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.txt-settings-color-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.txt-settings-color-label {
+  min-width: 60px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.txt-settings-color-picker {
+  width: 40px;
+  height: 30px;
+  padding: 2px;
+  cursor: pointer;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: transparent;
+}
+
+.txt-settings-color-picker:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.txt-settings-color-text {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 13px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  background: var(--background-secondary);
+  color: var(--text-normal);
+}
+
+/* 设置面板分组子标题 */
+.txt-settings-h4 {
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+
+/* ── § 6  移动端适配 ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .callout[data-callout^="txt-simple-"] .callout-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .txt-simple-note-line {
+    margin-left: 1.5em !important;
+    padding: 2px 8px !important;
+  }
+  .callout[data-callout^="txt-card-"] {
+    padding: 10px 12px 10px 16px !important;
+  }
+}
