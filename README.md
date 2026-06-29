@@ -158,7 +158,8 @@ Click the gear icon next to TXT Annotator in the Community plugins list and set 
 ## 打赏 / Donate
 
  Buy me a coffee ☕
-<img src="images/donate.png" width="200" alt="微信收款码">
+ 
+<img src="images/donate.jpg" width="200" alt="微信收款码">
 
 
 ---
