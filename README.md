@@ -11,24 +11,18 @@ Read and annotate TXT files directly in Obsidian — highlight text, add notes, 
 ### 🇨🇳 中文
 
 - **TXT 阅读器**：直接在 Obsidian 中打开 `.txt` 文件，无需切换外部工具
-- **五色高亮**：选中文字后一键标记，支持黄、粉、蓝、绿、橙五种颜色
+- **五色高亮**：选中文字后一键标记，支持五种颜色，可自定义
 - **批注**：为每条高亮添加文字批注，悬停即可预览
 - **自动生成笔记**：所有划线与批注自动同步到对应的 Markdown 笔记文件，删除高亮后笔记同步更新
 - **两种笔记样式**：卡片版（带时间戳、分割线）和简洁版，可在设置中切换
-![](images/notes.png)
-![](images/notes1.png)
 - **跳转定位**：按住 `Ctrl`（Windows/Linux）或 `Cmd`（macOS）点击高亮文字，直接跳转到笔记中对应位置
 - **滚动记忆**：自动记录每个文件的阅读进度，下次打开从上次位置继续
 - **深度自定义**：高亮颜色、字号、字体、字重、批注样式、时间戳、卡片背景色均可在设置中调整
-![](images/highlightcolor.png)
-![](images/highlighttext.png)
-![](images/notestext.png)
-![](images/timestamp.png)
 
 ### 🇬🇧 English
 
 - **TXT Reader**: Open `.txt` files directly inside Obsidian
-- **Five highlight colors**: Yellow, pink, blue, green, and orange — select text to highlight instantly
+- **Five highlight colors**: Colors customizable，select text to highlight instantly
 - **Annotations**: Attach text notes to any highlight; hover to preview
 - **Auto-generated notes**: All highlights and annotations sync to a Markdown file automatically; deleting a highlight updates the note accordingly
 - **Two note styles**: Card style (with timestamps and dividers) or Simple style — switchable in settings
@@ -44,7 +38,7 @@ Read and annotate TXT files directly in Obsidian — highlight text, add notes, 
 
 #### 🇨🇳 中文
 
-1. 前往 [Releases](../../releases) 页面，下载最新版本的 `main.js`、`styles.css`、`manifest.json`
+1. 前往 [Releases](https://github.com/heeeyc/obsidian-txt-annotator/releases) 页面，下载最新版本的 `main.js`、`styles.css`、`manifest.json`
 2. 在你的 Vault 中找到 `.obsidian/plugins/` 目录，新建文件夹 `txt-annotator`
 3. 将三个文件放入该文件夹
 4. 重启 Obsidian，或在设置 → 第三方插件页面点击右上角刷新按钮
@@ -53,7 +47,7 @@ Read and annotate TXT files directly in Obsidian — highlight text, add notes, 
 
 #### 🇬🇧 English
 
-1. Go to the [Releases](../../releases) page and download `main.js`, `styles.css`, and `manifest.json`
+1. Go to the [Releases](https://github.com/heeeyc/obsidian-txt-annotator/releases) page and download `main.js`, `styles.css`, and `manifest.json`
 2. In your vault, navigate to `.obsidian/plugins/` and create a folder named `txt-annotator`
 3. Place the three files inside that folder
 4. Restart Obsidian, or click the refresh button in Settings → Community plugins
@@ -88,13 +82,20 @@ Search for **TXT Annotator** in Obsidian Settings → Community plugins → Brow
 3. 选中文字，浮出颜色选择框，点击颜色即可高亮；点击 **✎ 批注** 可同时添加文字备注
 4. 点击已有高亮，弹出菜单可修改颜色、编辑批注或删除高亮
 5. 高亮与批注会自动同步生成同名 Markdown 笔记文件；删除高亮后笔记同步更新
- ![](images/highlight.png)
+![](images/highlight.png)
+6. 生成的笔记文件有两种显示方式：简洁版和卡片版（带时间戳、分割线），可在设置中进行切换
+![](images/notes.png)
+![](images/notes1.png)
 
 #### 四、其他功能
 
-- 按住 `Ctrl`（Windows/Linux）或 `Cmd`（macOS）点击高亮文字，跳转到笔记文件中对应位置
-- 关闭 TXT 文件再打开时，自动定位到上次阅读位置
-- 高亮颜色、笔记文字的字体/字号/颜色，以及卡片背景色、分割线、时间戳样式均可在设置中自定义
+1. 按住 `Ctrl`（Windows/Linux）或 `Cmd`（macOS）点击高亮文字，跳转到笔记文件中对应位置
+2. 关闭 TXT 文件再打开时，自动定位到上次阅读位置
+3. 高亮颜色、笔记文字的字体/字号/颜色，以及卡片背景色、分割线、时间戳样式均可在设置中自定义
+![](images/highlightcolor.png)
+![](images/highlighttext.png)
+![](images/notestext.png)
+![](images/timestamp.png)
 
 ---
 
